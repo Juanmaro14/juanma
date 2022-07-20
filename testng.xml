@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="UI Test Suite">
+   <listeners>
+	 <listener class-name="com.qa.utility.Listeners" />
+  </listeners>
+  <test thread-count="5" name="UI Testing" parallel="classes">
+    <classes>
+    	<class name="com.qa.testscripts.TC001"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
