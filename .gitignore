@@ -1,0 +1,13 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# folders
+test-output
+screenshots
+.settings
+bin
+target
+
+# files
+.classpath
+
+

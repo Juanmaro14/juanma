@@ -1,5 +1,7 @@
 package com.qa.testscripts;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterSuite;
@@ -21,6 +23,7 @@ public class TestBase {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		DemoPage = new DemoPage(driver);
 		driver.get("https://opensource-demo.orangehrmlive.com");
 	}
