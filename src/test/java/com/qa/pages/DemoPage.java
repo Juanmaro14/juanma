@@ -2,7 +2,6 @@ package com.qa.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -38,7 +37,7 @@ public class DemoPage {
 	@FindBy(xpath = "//span[text()='Job ']")
 	WebElement JobLink;
 
-	@FindBy(id = "menu_admin_viewJobTitleList")
+	@FindBy(xpath = "//a[text()='Job Titles']")
 	WebElement JobTitlesLink;
 
 	@FindBy(xpath = "//span[text()='Organization ']")
@@ -50,7 +49,7 @@ public class DemoPage {
 	@FindBy(xpath = "//a[@href='/web/index.php/dashboard/index']")
 	WebElement DashboardLink;
 
-	@FindAll(@FindBy(xpath = "//a[@href='/web/index.php/pim/viewPimModule']"))
+	@FindBy(xpath = "//a[@href='/web/index.php/pim/viewPimModule']")
 	WebElement PIMLink;
 
 	@FindBy(xpath = "(//input[@placeholder='Type for hints...'])[1]")
@@ -79,7 +78,7 @@ public class DemoPage {
 
 	@FindBy(xpath = "//a[@id='welcome']")
 	WebElement WelcomeLink;
-	
+
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement SearchButton;
 

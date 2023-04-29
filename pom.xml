@@ -18,10 +18,10 @@
         <testng.version>7.7.1</testng.version>
         <webdriver.manager.version>3.6.2</webdriver.manager.version>
         <junit.jupiter.version>5.4.2</junit.jupiter.version>
-	<rest.assured.version>4.4.0</rest.assured.version>
-	<cucumber.java.version>7.4.1</cucumber.java.version>
-	<cucumber.core.version>6.10.4</cucumber.core.version>
-	<cucumber.junit.version>7.4.1</cucumber.junit.version>
+		<rest.assured.version>4.4.0</rest.assured.version>
+		<cucumber.java.version>6.11.0</cucumber.java.version>
+		<cucumber.core.version>6.11.0</cucumber.core.version>
+		<cucumber.junit.version>6.11.0</cucumber.junit.version>
         <failsafe.plugin.version>2.22.2</failsafe.plugin.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
