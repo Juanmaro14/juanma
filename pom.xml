@@ -1,65 +1,124 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>sdet-course</groupId>
-	<artifactId>sdet-course</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+<?xml version="1.0" encoding="UTF-8"?>
 
-	<name>sdet-course</name>
-	<url>github.com/Juanmaroust/sdet-course</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+	
+  <groupId>sdet-course</groupId>
+  <artifactId>sdet-course</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>sdet-course</name>
+  <url>github.com/Juanmaroust/sdet-course</url>
+	
+   <properties>
+        <browser>chrome</browser>
+        <threads>1</threads>
+        <selenium.version>3.141.59</selenium.version>
+        <testng.version>6.14.3</testng.version>
+        <webdriver.manager.version>3.6.2</webdriver.manager.version>
+        <junit.jupiter.version>5.4.2</junit.jupiter.version>
+	<rest.assured.version>4.4.0</rest.assured.version>
+	<cucumber.java.version>7.4.1</cucumber.java.version>
+	<cucumber.core.version>6.10.4</cucumber.core.version>
+	<cucumber.junit.version>7.4.1</cucumber.junit.version>
+        <failsafe.plugin.version>2.22.2</failsafe.plugin.version>
+        <maven.compiler.version>3.8.1</maven.compiler.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <java.version>10</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.8.2</version>
+			<version>${junit.jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>3.141.59</version>
+			<version>${selenium.version}</version>
 		</dependency>
+		<dependency>
+            		<groupId>org.testng</groupId>
+            		<artifactId>testng</artifactId>
+            		<version>${testng.version}</version>
+        	</dependency>
 		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>webdrivermanager</artifactId>
-			<version>5.1.1</version>
+			<version>${webdriver.manager.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
 		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>rest-assured</artifactId>
-			<version>4.4.0</version>
+			<version>${rest.assured.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>7.4.1</version>
+			<version>${cucumber.java.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-core</artifactId>
-			<version>6.10.4</version>
+			<version>${cucumber.core.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
-			<version>7.4.1</version>
+			<version>${cucumber.junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
-		<dependency>
-    			<groupId>org.apache.maven.plugins</groupId>
-    			<artifactId>maven-compiler-plugin</artifactId>
-    			<version>3.8.1</version>
-		</dependency>
 	</dependencies>
+	
+	
+	<profiles>
+        	<profile>
+            		<id>selenium</id>
+            		<activation>
+                		<activeByDefault>true</activeByDefault>
+            		</activation>
+		    <build>
+			<plugins>
+			    <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+				    <source>${java.version}</source>
+				    <target>${java.version}</target>
+				</configuration>
+			    </plugin>
+			    <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${failsafe.plugin.version}</version>
+				<configuration>
+				    <!--You can specify which TestNG groups to run-->
+				    <!--<groups>regression</groups>-->
+				    <!--<groups>smoke</groups>-->
+				    <parallel>methods</parallel>
+				    <threadCount>${threads}</threadCount>
+				    <systemPropertyVariables>
+					<browser>${browser}</browser>
+				    </systemPropertyVariables>
+				</configuration>
+			    </plugin>
+			</plugins>
+		    </build>
+		</profile>
+    	</profiles>
 </project>
