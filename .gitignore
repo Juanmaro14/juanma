@@ -9,5 +9,6 @@ target
 
 # files
 .classpath
+.project
 
 
