@@ -2,36 +2,48 @@ package com.qa.testscripts;
 
 import static org.testng.Assert.assertTrue;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class TC001 extends TestBase {
 
 	@Test(priority = 2)
 	public void dashboardVerification() {
+		driver.get("https://opensource-demo.orangehrmlive.com");
+		System.out.println("Title of the website: " + driver.getTitle());
+		demoPage.getUsernameInput().sendKeys("Admin");
+		demoPage.getPasswordInput().sendKeys("admin123");
+		demoPage.getLoginButton().click();
 		assertTrue(driver.getCurrentUrl().contains("dashboard"));
-		DemoPage.getAdminLink().click();
-		assertTrue(DemoPage.getUserManagmentLink().isDisplayed());
-		assertTrue(DemoPage.getJobLink().isDisplayed());
-		assertTrue(DemoPage.getOrganizationLink().isDisplayed());
-		assertTrue(DemoPage.getQualificationsLink().isDisplayed());
-		DemoPage.getDashboardLink().click();
+		demoPage.getAdminLink().click();
+		assertTrue(demoPage.getUserManagmentLink().isDisplayed());
+		assertTrue(demoPage.getJobLink().isDisplayed());
+		assertTrue(demoPage.getOrganizationLink().isDisplayed());
+		assertTrue(demoPage.getQualificationsLink().isDisplayed());
+		demoPage.getDashboardLink().click();
+		//Missing validations after click
 	}
 
 	@Test(priority = 1)
 	public void login() {
+		driver.get("https://opensource-demo.orangehrmlive.com");
 		System.out.println("Title of the website: " + driver.getTitle());
-		DemoPage.getUsernameInput().sendKeys("Admin");
-		DemoPage.getPasswordInput().sendKeys("admin123");
-		DemoPage.getLoginButton().click();
+		demoPage.getUsernameInput().sendKeys("Admin");
+		demoPage.getPasswordInput().sendKeys("admin123");
+		demoPage.getLoginButton().click();
+		//Missing validations after click
 	}
 
 	@Test(priority = 3)
 	public void pimScenario() throws InterruptedException {
-		DemoPage.getPIMLink().click();
-		DemoPage.getEmployeeNameInput().clear();
-		DemoPage.getEmployeeNameInput().sendKeys("Linda Anderson");
-		DemoPage.getSearchButton().click();
+		driver.get("https://opensource-demo.orangehrmlive.com");
+		System.out.println("Title of the website: " + driver.getTitle());
+		demoPage.getUsernameInput().sendKeys("Admin");
+		demoPage.getPasswordInput().sendKeys("admin123");
+		demoPage.getLoginButton().click();
+		demoPage.getPIMLink().click();
+		demoPage.getEmployeeNameInput().clear();
+		demoPage.getEmployeeNameInput().sendKeys("Linda Anderson");
+		demoPage.getSearchButton().click();
 		//Missing validations after click
 	}
 
