@@ -2,6 +2,7 @@ package com.qa.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -19,40 +20,40 @@ public class DemoPage {
 	@FindBy(id = "divLogo")
 	WebElement Logo;
 
-	@FindBy(id = "txtUsername")
+	@FindBy(name = "username")
 	WebElement UsernameInput;
 
-	@FindBy(id = "txtPassword")
+	@FindBy(name = "password")
 	WebElement PasswordInput;
 
-	@FindBy(id = "btnLogin")
+	@FindBy(className = "orangehrm-login-button")
 	WebElement LoginButton;
 
-	@FindBy(id = "menu_admin_viewAdminModule")
+	@FindBy(xpath = "//a[@href='/web/index.php/admin/viewAdminModule']")
 	WebElement AdminLink;
 
-	@FindBy(id = "menu_admin_UserManagement")
+	@FindBy(xpath = "//span[text()='User Management ']")
 	WebElement UserManagmentLink;
 
-	@FindBy(xpath = "//a[@id='menu_admin_Job']")
+	@FindBy(xpath = "//span[text()='Job ']")
 	WebElement JobLink;
 
 	@FindBy(id = "menu_admin_viewJobTitleList")
 	WebElement JobTitlesLink;
 
-	@FindBy(id = "menu_admin_Organization")
+	@FindBy(xpath = "//span[text()='Organization ']")
 	WebElement OrganizationLink;
 
-	@FindBy(id = "menu_admin_Qualifications")
+	@FindBy(xpath = "//span[text()='Qualifications ']")
 	WebElement QualificationsLink;
 
-	@FindBy(id = "menu_dashboard_index")
+	@FindBy(xpath = "//a[@href='/web/index.php/dashboard/index']")
 	WebElement DashboardLink;
 
-	@FindBy(css = "#menu_pim_viewPimModule")
+	@FindAll(@FindBy(xpath = "//a[@href='/web/index.php/pim/viewPimModule']"))
 	WebElement PIMLink;
 
-	@FindBy(xpath = "//input[@id='empsearch_employee_name_empName']")
+	@FindBy(xpath = "(//input[@placeholder='Type for hints...'])[1]")
 	WebElement EmployeeNameInput;
 
 	@FindBy(css = "#menu_time_viewTimeModule")
@@ -78,6 +79,9 @@ public class DemoPage {
 
 	@FindBy(xpath = "//a[@id='welcome']")
 	WebElement WelcomeLink;
+	
+	@FindBy(xpath = "//button[@type='submit']")
+	WebElement SearchButton;
 
 	public WebElement getLogo() {
 		return Logo;
@@ -149,5 +153,9 @@ public class DemoPage {
 
 	public WebElement getWelcomeLink() {
 		return WelcomeLink;
+	}
+
+	public WebElement getSearchButton() {
+		return SearchButton;
 	}
 }
